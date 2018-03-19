@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+  组映射文件
+  date: 2017-02-20 10:01:41
+  @author Liuweiyao
+  @version 1.0
+-->
+<mapper namespace="com.syswin.budget.mapper.GroupMapper">
+	<!-- 组对象映射 -->
+	<resultMap id="groupMap" type="com.syswin.budget.model.Group">
+			<!-- 主键 -->
+				<id property="id" column="id" javaType="String" />
+					<!-- 群组名 -->
+				<result property="groupname" column="groupname" javaType="String" />
+					<!-- 群头像 -->
+				<result property="avatar" column="avatar" javaType="String" />
+					<!-- 创建者 -->
+				<result property="createBy" column="create_by" javaType="String" />
+					<!-- 创建时间 -->
+				<result property="createDate" column="create_date" javaType="Date" />
+					<!-- 更新者 -->
+				<result property="updateBy" column="update_by" javaType="String" />
+					<!-- 更新时间 -->
+				<result property="updateDate" column="update_date" javaType="Date" />
+					<!-- 备注信息 -->
+				<result property="remarks" column="remarks" javaType="String" />
+					<!-- 逻辑删除标记（0：显示；1：隐藏） -->
+				<result property="delFlag" column="del_flag" javaType="String" />
+				</resultMap>
+	
+	<!-- 新增组 -->
+	<insert id="add" parameterType="com.syswin.budget.model.Group" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO `t_group` (
+				`groupname`
+				,`avatar`
+				,`create_by`
+				,`create_date`
+				,`update_by`
+				,`update_date`
+				,`remarks`
+				,`del_flag`
+		)
+		VALUES (
+				#{groupname}
+				,#{avatar}
+				,#{createBy}
+				,#{createDate}
+				,#{updateBy}
+				,#{updateDate}
+				,#{remarks}
+				,#{delFlag}
+		)
+	</insert>
+	
+	<!-- 删除组 -->
+	<delete id="delete">
+		DELETE FROM `t_group` WHERE `id`=#{id}		
+	</delete>
+	
+	<!-- 修改组 -->
+	<update id="update" parameterType="com.syswin.budget.model.Group">
+		UPDATE `t_group`
+		<set>
+			<if test="groupname != null">`groupname`=#{groupname},</if>
+			<if test="avatar != null">`avatar`=#{avatar},</if>
+			<if test="createBy != null">`create_by`=#{createBy},</if>
+			<if test="createDate != null">`create_date`=#{createDate},</if>
+			<if test="updateBy != null">`update_by`=#{updateBy},</if>
+			<if test="updateDate != null">`update_date`=#{updateDate},</if>
+			<if test="remarks != null">`remarks`=#{remarks},</if>
+			<if test="delFlag != null">`del_flag`=#{delFlag},</if>
+		</set>
+		WHERE `id`=#{id}	
+	</update>
+	
+	<!-- 根据主键查询组 -->
+	<select id="findByPK" resultMap="groupMap">
+		SELECT
+	  	  `id`
+	  	  ,`groupname`
+	  	  ,`avatar`
+	  	  ,`create_by`
+	  	  ,`create_date`
+	  	  ,`update_by`
+	  	  ,`update_date`
+	  	  ,`remarks`
+	  	  ,`del_flag`
+	  	FROM `t_group`
+	  WHERE `id`=#{id}	
+	</select>
+	
+	<!-- 组列表查询 -->
+	<select id="findList" resultMap="groupMap">
+        SELECT
+	      `id`
+	        ,`groupname`
+	        ,`avatar`
+	        ,`create_by`
+	        ,`create_date`
+	        ,`update_by`
+	        ,`update_date`
+	        ,`remarks`
+	        ,`del_flag`
+	      FROM `t_group`
+	<where>
+			<if test="groupname != null">AND `groupname`=#{groupname}</if>
+			<if test="avatar != null">AND `avatar`=#{avatar}</if>
+			<if test="createBy != null">AND `create_by`=#{createBy}</if>
+			<if test="createDate != null">AND `create_date`=#{createDate}</if>
+			<if test="updateBy != null">AND `update_by`=#{updateBy}</if>
+			<if test="updateDate != null">AND `update_date`=#{updateDate}</if>
+			<if test="remarks != null">AND `remarks`=#{remarks}</if>
+			<if test="delFlag != null">AND `del_flag`=#{delFlag}</if>
+		</where>
+	</select>
+	
+	<!-- 组查询全部 -->
+	<select id="findAll" resultMap="groupMap">
+        SELECT
+	      `id`
+	        ,`groupname`
+	        ,`avatar`
+	        ,`create_by`
+	        ,`create_date`
+	        ,`update_by`
+	        ,`update_date`
+	        ,`remarks`
+	        ,`del_flag`
+	      FROM `t_group`
+	</select>
+</mapper>

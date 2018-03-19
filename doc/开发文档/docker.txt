@@ -1,0 +1,27 @@
+启动报错：
+
+Error starting daemon: Error initializing network controller: Error creating default \”bridge\” network: failed to parse pool request for address spa
+
+解决: 
+在Docker配置文件/etc/sysconfig/docker “OPTIONS”中加入:–bip=172.17.42.1/16, 如下:
+
+OPTIONS='--selinux-enabled --log-driver=journald --signature-verification=false --bip=172.17.42.1/16'
+
+启动，关闭docker服务
+service docker start/stop
+
+#查看运行的进程
+docker ps 
+
+#查看所有安装的进程
+docker ps -a 
+
+运行tomcat
+docker run tomcat
+
+安装jenkins
+docker pull jenkins
+docker run -d -p 8080:8080 -p 50000:50000 --name jenkins jenkins
+
+进入jenkins (ff5da5032b6c:jenkins id)
+docker exec -it ff5da5032b6c /bin/bash

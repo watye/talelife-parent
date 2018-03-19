@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:component-scan base-package="com.talelife.coder" />
+	
+	<!-- 数据源配置 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/myproject?characterEncoding=utf8"/>
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
+	
+	<!-- 类型转换配置 -->
+	<bean id="typeConvertor" class="com.talelife.coder.convertor.TypeConvertor">
+		<property name="typeMap">
+			<map>
+				<entry key="java.sql.Timestamp" value="Date"/>
+				<entry key="java.math.BigDecimal" value="Double"/>
+			</map>
+		</property>
+	</bean>
+	
+	<!-- 生成配置 -->
+	<bean id="config" class="com.talelife.coder.entity.Config">
+		<property name="author" value="Liuweiyao" />
+		<property name="fileOutputPath" value="c:\coder" />
+		<property name="tableConfig">
+			<list>
+				<map>
+					<entry key="packageName" value="com.talelife.auth"></entry>
+					<entry key="tableName" value="sys_user"></entry>
+					<entry key="entityName" value="User"></entry>
+					<entry key="entityComment" value="用户"></entry>
+				</map>
+			</list>
+		</property>
+	</bean>
+	
+</beans>

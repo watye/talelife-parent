@@ -1,0 +1,28 @@
+layer.alert('保存成功', {icon: 1, title:'提示'});
+
+layer.confirm(saveType == 3 ? '提审成功' : '保存成功', {
+				btn: ['关闭'], closeBtn: 0, icon: 1
+			}, function () {
+				if (saveType == $scope.setting.SAVE_BACK) {
+					window.location.href = rootPath + "/modules/executeControl/nonPay/index.html";
+				} else if (saveType == $scope.setting.SAVE_ADD) {
+					window.location.href = rootPath + "/modules/executeControl/nonPay/add.html";
+				} else if (saveType == $scope.setting.SAVE_APPROVE) {
+					window.location.href = rootPath + "/modules/executeControl/nonPay/index.html";
+				} else {
+					layer.closeAll();
+				}
+			});
+			
+			
+layer.confirm('确认删除？', { icon: 3, title: '提示' }, function (index) {
+	$http.post(rootPath + "/noncontract_payment/delete", sn).success(function (data) {
+		layer.close(index);
+		$scope.pageData({});
+		layer.alert("删除成功", { "icon": 1 });
+	});
+});
+
+
+var loadingIndex = layer.load(1, { shade: [0.4] });
+layer.close(loadingIndex);

@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col-sm-6">
+		<div class="dataTables_info">
+			共 {{page.total}} 项 每页
+			<select class="input-sm" ng-model="page.pageSize" ng-options="p as p for p in page.pageSizeList" ng-change="pageData({'pageSize':page.pageSize})">
+			</select>
+			条记录
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="dataTables_paginate paging_simple_numbers">
+			<ul class="pagination">
+				<li ng-if="page.pageNum<=1" class="paginate_button previous disabled"><a href="javascript:;"><</a></li>
+				<li ng-if="page.pageNum>1" class="paginate_button previous"><a href="javascript:;" ng-click="pageData({'pageNum':page.pageNum-1,'pageSize':page.pageSize})"><</a></li>
+				<li class="paginate_button"><a href="javascript:;">{{page.pageNum}}/{{page.pageCount}}</a></li>
+				<li ng-if="page.pageNum<page.pageCount" class="paginate_button next"><a href="javascript:;" ng-click="pageData({'pageNum':page.pageNum+1,'pageSize':page.pageSize})">></i></a></li>
+				<li ng-if="page.pageNum>=page.pageCount" class="paginate_button next disabled"><a href="javascript:;">></i></a></li>
+			</ul>
+		</div>
+	</div>
+</div>

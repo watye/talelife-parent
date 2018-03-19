@@ -1,0 +1,115 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.talelife</groupId>
+    <artifactId>project</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>project-web</artifactId>
+  <packaging>war</packaging>
+  
+   <properties>
+  	<springVersion>4.3.5.RELEASE</springVersion>
+  	<dubboVersion>2.5.3</dubboVersion>
+  </properties>
+  
+  <dependencies>
+  		<dependency>
+  			<groupId>com.talelife</groupId>
+  			<artifactId>project-service</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+  		</dependency>
+  		<!-- springframework -->
+	    <dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<dependency>
+	  		<groupId>org.springframework</groupId>
+	  		<artifactId>spring-test</artifactId>
+	  		<scope>test</scope>
+	  	</dependency>
+		<!-- 远程通讯 -->
+		<!-- <dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>dubbo</artifactId>
+		    <exclusions>
+		    	<exclusion>
+		    		<groupId>org.springframework</groupId>
+		    		<artifactId>spring</artifactId>
+		    	</exclusion>
+		    </exclusions>
+		</dependency> -->
+	  	<!-- 日志 -->
+   		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+		<!-- 测试 -->
+		<dependency>
+	    	<groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <scope>test</scope>
+		</dependency>
+    	<!-- responseBody对象转json支持 -->
+    	<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>fastjson</artifactId>
+		</dependency>
+    	<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+		
+  </dependencies>
+  <build>
+    <finalName>webapp</finalName>
+    <resources>
+            <resource> 
+			    <directory>src/main/resources</directory> 
+			    <includes> 
+			        <include>**/*.properties</include> 
+			        <include>**/*.xml</include> 
+			    </includes> 
+			    <filtering>false</filtering> 
+			</resource>
+			<resource>
+			    <directory>src/main/java</directory> 
+			    <includes> 
+			        <include>**/*.properties</include> 
+			        <include>**/*.xml</include> 
+			    </includes> 
+			    <filtering>false</filtering> 
+			</resource>
+        </resources>
+  </build>
+ 
+  <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+   </plugins>
+</project>

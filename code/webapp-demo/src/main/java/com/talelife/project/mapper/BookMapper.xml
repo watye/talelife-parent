@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+  书籍映射文件
+  date: 2017-02-09 14:38:55
+  @author Liuweiyao
+  @version 1.0
+-->
+<mapper namespace="com.talelife.project.mapper.BookMapper">
+	<!-- 书籍对象映射 -->
+	<resultMap id="bookMap" type="com.talelife.project.model.Book">
+			<!--  -->
+				<id property="id" column="id" javaType="Long" />
+					<!-- 名称 -->
+				<result property="name" column="name" javaType="String" />
+					<!-- 价格 -->
+				<result property="price" column="price" javaType="Double" />
+				</resultMap>
+	
+	<!-- 新增书籍 -->
+	<insert id="add" parameterType="com.talelife.project.model.Book" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO `t_book` (
+				`name`
+				,`price`
+		)
+		VALUES (
+				#{name}
+				,#{price}
+		)
+	</insert>
+	
+	<!-- 删除书籍 -->
+	<delete id="delete">
+		DELETE FROM `t_book` WHERE `id`=#{id}		
+	</delete>
+	
+	<!-- 修改书籍 -->
+	<update id="update" parameterType="com.talelife.project.model.Book">
+		UPDATE `t_book`
+		<set>
+			<if test="name != null">`name`=#{name},</if>
+			<if test="price != null">`price`=#{price},</if>
+		</set>
+		WHERE `id`=#{id}	
+	</update>
+	
+	<!-- 根据主键查询书籍 -->
+	<select id="findByPK" resultMap="bookMap">
+		SELECT
+	  	  `id`
+	  	  ,`name`
+	  	  ,`price`
+	  	FROM `t_book`
+	  WHERE `id`=#{id}	
+	</select>
+	
+	<!-- 书籍列表查询 -->
+	<select id="findList" resultMap="bookMap">
+        SELECT
+	      `id`
+	        ,`name`
+	        ,`price`
+	      FROM `t_book`
+	<where>
+			<if test="name != null">AND `name`=#{name}</if>
+			<if test="price != null">AND `price`=#{price}</if>
+		</where>
+	</select>
+	
+	<select id="findPage" resultMap="bookMap">
+        SELECT
+	      `id`
+	        ,`name`
+	        ,`price`
+	      FROM `t_book`
+	<where>
+			<if test="name != null">AND `name`=#{name}</if>
+			<if test="price != null">AND `price`=#{price}</if>
+		</where>
+	</select>
+	
+	<!-- 书籍查询全部 -->
+	<select id="findAll" resultMap="bookMap">
+        SELECT
+	      `id`
+	        ,`name`
+	        ,`price`
+	      FROM `t_book`
+	</select>
+</mapper>

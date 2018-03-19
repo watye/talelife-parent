@@ -1,0 +1,10 @@
+svn²å¼þ
+http://subclipse.tigris.org/update_1.8.x
+
+
+
+zookeeper
+http://mirrors.cnnic.cn/apache/zookeeper/zookeeper-3.4.9/zookeeper-3.4.9.tar.gz
+
+
+rpm -qa|grep jdk

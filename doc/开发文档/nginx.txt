@@ -1,0 +1,22 @@
+nginx位于第三方的yum源里面，而不在centos官方yum源里面
+
+ 
+
+解决方法：
+
+ 
+
+安装epel(Extra Packages for Enterprise Linux)
+
+a、去epel网站 http://fedoraproject.org/wiki/EPEL下载
+
+b、我的系统是centos5.7，cpu是x86_64，所以我下载的是wget http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
+
+       如果是centos6， 则应该下载 wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+
+c、安装epel
+
+ 
+
+   rpm -ivh epel-release-5-4.noarch.rpm
+再次执行 yum install nginx,则会提示安装成功了

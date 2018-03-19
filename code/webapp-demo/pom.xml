@@ -1,0 +1,185 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.talelife</groupId>
+  <artifactId>webapp-demo</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>webapp-demo Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  
+  <properties>
+        <spring.version>5.0.3.RELEASE</spring.version>
+        <mybatis-spring.version>1.3.0</mybatis-spring.version>
+        <mybatis.version>3.4.1</mybatis.version>
+        <mysql.version>5.1.17</mysql.version>
+        <druid.version>1.0.27</druid.version>
+        <pagehelper.version>5.0.0</pagehelper.version>
+        <fastjson.version>1.2.23</fastjson.version>
+        <dubbo.version>2.5.3</dubbo.version>
+        <log4j.version>1.2.16</log4j.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <junit.version>4.12</junit.version>
+        <servlet.version>3.1.0</servlet.version>
+        <commons-dbcp.version>20030825.184428</commons-dbcp.version>
+        <commons-pool.version>20030825.183949</commons-pool.version>
+        <commons-collections.version>20040616</commons-collections.version>
+        <fastjson.version>1.2.31</fastjson.version>
+        <fasterxml.jackson.version>2.9.4</fasterxml.jackson.version>
+        <codehaus.jackson.version>1.9.13</codehaus.jackson.version>
+    </properties>
+    
+  <dependencies>
+    <dependency>
+	        <groupId>org.springframework</groupId>
+	        <artifactId>spring-context</artifactId>
+	        <version>${spring.version}</version>
+	    </dependency>
+	    <dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-webmvc</artifactId>
+		    <version>${spring.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-tx</artifactId>
+		    <version>${spring.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		    <version>${spring.version}</version>
+		</dependency>
+		<dependency>
+	  		<groupId>org.springframework</groupId>
+	  		<artifactId>spring-test</artifactId>
+	  		<version>${spring.version}</version>
+	  		<scope>test</scope>
+	  	</dependency>
+	  	<!-- 数据库 -->
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		   <version>${mysql.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.mybatis</groupId>
+		    <artifactId>mybatis</artifactId>
+		 <version>${mybatis.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.mybatis</groupId>
+		    <artifactId>mybatis-spring</artifactId>
+		    <version>${mybatis-spring.version}</version>
+		</dependency>
+		<dependency>						
+			 <groupId>com.github.pagehelper</groupId>
+			 <artifactId>pagehelper</artifactId>
+			 <version>${pagehelper.version}</version>
+		</dependency>
+		<dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+		<dependency>
+		    <groupId>commons-dbcp</groupId>
+		    <artifactId>commons-dbcp</artifactId>
+		    <version>${commons-dbcp.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>commons-pool</groupId>
+		    <artifactId>commons-pool</artifactId>
+		    <version>${commons-pool.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>commons-collections</groupId>
+		    <artifactId>commons-collections</artifactId>
+		    <version>${commons-collections.version}</version>
+		</dependency>
+		<!-- json -->
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>fastjson</artifactId>
+		    <version>${fastjson.version}</version>
+		</dependency>
+    	<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${codehaus.jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${fasterxml.jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${fasterxml.jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${fasterxml.jackson.version}</version>
+		</dependency>
+		
+	  	<!-- 日志 -->
+   		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-api</artifactId>
+		    <version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-log4j12</artifactId>
+		    <version>${slf4j.version}</version>
+		</dependency>
+		<!-- 测试 -->
+		<dependency>
+	    	<groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <version>${junit.version}</version>
+		    <scope>test</scope>
+		</dependency>
+		
+		<!-- spring-session -->
+		<dependency>
+		  <groupId>org.springframework.session</groupId>
+		  <artifactId>spring-session-data-redis</artifactId>
+		  <version>2.0.1.RELEASE</version>
+		</dependency>
+		<dependency>
+		  <groupId>redis.clients</groupId>
+		  <artifactId>jedis</artifactId>
+		  <version>2.8.1</version>
+		</dependency>
+		
+		<!-- <dependency>
+		  <groupId>org.springframework.data</groupId>
+		  <artifactId>spring-data-redis</artifactId>
+		  <version>1.8.9.RELEASE</version>
+		</dependency>
+		<dependency>
+		  <groupId>org.springframework.session</groupId>
+		  <artifactId>spring-session</artifactId>
+		  <version>1.3.1.RELEASE</version>
+		</dependency>
+		<dependency>
+		  <groupId>redis.clients</groupId>
+		  <artifactId>jedis</artifactId>
+		  <version>2.9.0</version>
+		</dependency> -->
+		
+
+		<dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet.version}</version>
+        </dependency>
+        
+  </dependencies>
+  <build>
+    <finalName>webapp-demo</finalName>
+  </build>
+</project>

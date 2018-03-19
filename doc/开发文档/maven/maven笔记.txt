@@ -1,0 +1,5 @@
+#安装jar到本地库仑
+mvn install:install-file -DgroupId=com.montnets.mwgate -DartifactId=smsutil -Dversion=1.0.0 -Dpackaging=jar -Dfile=d:/JavaSmsSdk.jar
+
+#安装jar到maven私服
+mvn deploy:deploy-file -DgroupId=com.montnets.mwgate -DartifactId=smsutil -Dversion=1.0.0 -Dpackaging=jar -Dfile=d:\JavaSmsSdk.jar -Durl=http://172.31.118.93:8081/nexus/content/repositories/thirdparty/ -DrepositoryId=thirdparty 

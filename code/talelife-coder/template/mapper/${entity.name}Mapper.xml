@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+  ${entity.comment}映射文件
+  date: $dateFormat.format(${config.date})
+  @author ${config.author}
+  @version 1.0
+-->
+<mapper namespace="${entity.packageName}.mapper.${entity.name}Mapper">
+	<!-- ${entity.comment}对象映射 -->
+	<resultMap id="${entity.varName}Map" type="${entity.packageName}.model.${entity.name}">
+	#foreach($property in $entity.properties)
+		<!-- ${property.comment} -->
+		#if($property.isPk)
+		<id property="${property.name}" column="${property.columnName}" javaType="${property.type}" />
+		#else
+		<result property="${property.name}" column="${property.columnName}" javaType="${property.type}" />
+		#end
+	#end
+	</resultMap>
+	
+	<sql id="columns">
+	#set($i=0)
+#foreach($column in $table.columns)
+	  #if($i>0),#end`$column.name`
+	  #set($i=$i+1)
+#end
+</sql>
+	
+	<!-- 新增${entity.comment} -->
+	<insert id="add" parameterType="${entity.packageName}.model.${entity.name}" useGeneratedKeys="true" keyProperty="#foreach($column in $table.columns)#if($column.isPk)$column.propertyName#end#end">
+	#set($i=0)
+	#set($j=0)
+	INSERT INTO `${table.name}` (
+#foreach($column in $table.columns)
+		#if(!$column.isPk)#if($i>0),#end`$column.name`
+	#set($i=$i+1)
+	#end
+#end
+)
+		VALUES (
+#foreach($column in $table.columns)
+		#if(!$column.isPk)#if($j>0),#end#{$column.propertyName}
+	#set($j=$j+1)
+	#end
+#end
+)
+	</insert>
+	
+	<!-- 删除${entity.comment} -->
+	<delete id="delete">
+		DELETE FROM `${table.name}` WHERE #foreach($column in $table.columns)#if($column.isPk)`$column.name`=#{$column.propertyName}#end#end
+		
+	</delete>
+	
+	<!-- 修改${entity.comment} -->
+	<update id="update" parameterType="${entity.packageName}.model.${entity.name}">
+		UPDATE `${table.name}`
+		<set>
+#foreach($column in $table.columns)
+	#if(!$column.isPk)
+	<if test="${column.propertyName} != null">`${column.name}`=#{${column.propertyName}},</if>
+	#end
+#end
+	</set>
+		WHERE #foreach($column in $table.columns)#if($column.isPk)`$column.name`=#{$column.propertyName}#end#end
+	
+	</update>
+	
+	<!-- 根据主键查询${entity.comment} -->
+	<select id="findByPK" resultMap="${entity.varName}Map">
+	SELECT
+	  <include refid="columns"/>
+	FROM `${table.name}`
+	  WHERE #foreach($column in $table.columns)#if($column.isPk)`$column.name`=#{$column.propertyName}#end#end
+	
+	</select>
+	
+	<!-- ${entity.comment}列表查询 -->
+	<select id="findList" resultMap="${entity.varName}Map">
+    SELECT
+	  <include refid="columns"/>
+  FROM `${table.name}`
+	<where>
+#foreach($column in $table.columns)
+	#if(!$column.isPk)
+	<if test="${column.propertyName} != null">AND `${column.name}`=#{${column.propertyName}}</if>
+	#end
+#end
+	</where>
+	</select>
+	
+	<!-- ${entity.comment}查询全部 -->
+	<select id="findAll" resultMap="${entity.varName}Map">
+    SELECT
+	  <include refid="columns"/>
+  FROM `${table.name}`
+	</select>
+</mapper>

@@ -1,0 +1,25 @@
+0、yusuan_db2  172.28.50.156  root  123456
+1、yusuan_db  172.28.50.154  root  123456
+2、yusuan_file 172.28.50.149  root  123456
+3、yusuan_app  172.28.50.135  root  123456
+3、yusuan_app2 172.28.50.155  root  123456
+
+
+域名                  二级访问目录         对应ip及端口
+budget.systoon.com    b135                 172.28.50.135:8080
+                      b155                 172.28.50.155:8080
+
+budgetApp.systoon.com app135               172.28.50.135:8081
+                      app155               172.28.50.155:8081
+
+budgetAPI.systoon.com api135               172.28.50.135:8082
+                      api155               172.28.50.155:8082
+ 
+公网映射已完成，域名对应关系见如上表格，如有问题请随时联系
+访问示例：http://budget.systoon.com/b135/
+
+
+
+http://172.28.50.135:8081/index/login.html
+
+http://172.28.50.135:8080/nets-budget

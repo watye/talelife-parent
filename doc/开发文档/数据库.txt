@@ -1,0 +1,27 @@
+导出数据和表结构（不包含存储过程）
+mysqldump dbname1 -u root -p > xxx.sql
+
+只导表结构
+mysqldump -d dbname1 -u root -p > xxx.sql
+
+导出存储过程以及自定义函数(不导出结构和数据，要同时导出结构的话，需要同时使用-d)
+mysqldump -R -ndt dbname1 -u root -p > xxx.sql
+
+只导出数据
+mysqldump -t dbname1 -u root -p > xxx.sql
+
+导出某个表
+mysqldump -u root -p dbname1 table1> xxx.sql
+
+--备份数据库
+mysqldump -uroot -p --opt -R ets_budget>ets_budget.sql
+ 
+--备份数据库，忽略指定表
+mysqldump -uroot -p --opt -R --ignore-table=ets_budget.t_receivable ets_budget>ets_budget.sql
+ 
+--mysql数据库逆向生成pdm
+1、安装mysql-connector-odbc
+2、使用powerdesigner->file->Reverse Engineer->Database
+
+--pdm文件生成数据库文档
+使用PDMReader软件

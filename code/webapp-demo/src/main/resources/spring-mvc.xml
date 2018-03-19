@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+   
+  <!--  <import resource="consumer.xml"/> -->
+   <mvc:annotation-driven />
+   
+   <context:component-scan base-package="com.talelife.project">
+   		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />    
+   </context:component-scan>
+   
+	<!-- 对静态资源文件的访问， 将无法mapping到Controller的path交给default servlet handler处理 -->
+	<!-- <mvc:default-servlet-handler /> -->
+	
+	<!-- springMVC静态资源不拦截 -->
+	<mvc:resources mapping="/js/**" location="/js/"/>
+	<mvc:resources mapping="/lib/**" location="/lib/"/>
+	<mvc:resources mapping="/image/**" location="/image/"/>
+	<mvc:resources mapping="/css/**" location="/css/"/>
+	<mvc:resources mapping="/module/**" location="/module/"/>
+	<mvc:resources mapping="/index.html" location="/"/>
+	
+	<!-- spring-session
+	<bean id="redisHttpSessionConfiguration"
+	      class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
+	    <property name="maxInactiveIntervalInSeconds" value="600"/>
+	</bean>
+	
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+	    <property name="maxTotal" value="100" />
+	    <property name="maxIdle" value="10" />
+	</bean>
+	
+	<bean id="jedisConnectionFactory"
+	      class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" destroy-method="destroy">
+	    <property name="hostName" value="${redis.hostname}"/>
+	    <property name="port" value="${redis.port}"/>
+	    <property name="password" value="${redis.password}" />
+	    <property name="timeout" value="3000"/>
+	    <property name="usePool" value="true"/>
+	    <property name="poolConfig" ref="jedisPoolConfig"/>
+	</bean>
+ -->
+</beans>

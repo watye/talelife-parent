@@ -1,0 +1,4 @@
+1、jenkins.war用tomcat运行；
+2、安装svn,jdk,maven,ssh,deploy to container插件；
+3、建立maven工程，设置好svn路径
+4、点立即构建

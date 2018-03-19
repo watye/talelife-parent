@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="webapp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>webapp</title>
+	<script type="text/javascript" src="js/common.js"></script>
+  </head>
+  <body>
+  	<header>
+        <nav class="navbar navbar-default">
+	        <div class="container">
+	
+	            <ul class="nav navbar-nav navbar-right">
+	                <li><a href="#/"><i class="fa fa-home"></i> Home</a></li>
+	                <li><a href="#/book"><i class="fa fa-shield"></i> Book</a></li>
+	            </ul>
+	        </div>
+        </nav>
+    </header>
+
+    <div>
+        <div ng-view></div>
+    </div>
+
+    <footer class="text-center">
+        footer
+    </footer>
+
+  </body>
+  
+</html>
