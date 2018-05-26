@@ -22,7 +22,7 @@
 		<property name="typeMap">
 			<map>
 				<entry key="java.sql.Timestamp" value="Date"/>
-				<entry key="java.math.BigDecimal" value="Double"/>
+				<!-- <entry key="java.math.BigDecimal" value="Double"/> -->
 			</map>
 		</property>
 	</bean>
@@ -34,10 +34,10 @@
 		<property name="tableConfig">
 			<list>
 				<map>
-					<entry key="packageName" value="com.talelife.auth"></entry>
-					<entry key="tableName" value="sys_user"></entry>
-					<entry key="entityName" value="User"></entry>
-					<entry key="entityComment" value="用户"></entry>
+					<entry key="packageName" value="com.talelife.myproject"></entry>
+					<entry key="tableName" value="lop_user"></entry>
+					<entry key="entityName" value="LopUser"></entry>
+					<entry key="entityComment" value="L用户"></entry>
 				</map>
 			</list>
 		</property>

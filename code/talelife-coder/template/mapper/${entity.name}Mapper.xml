@@ -90,6 +90,20 @@
 	</where>
 	</select>
 	
+	<!-- ${entity.comment}分页查询 -->
+	<select id="findPage" resultMap="${entity.varName}Map">
+    SELECT
+	  <include refid="columns"/>
+  FROM `${table.name}`
+	<where>
+#foreach($column in $table.columns)
+	#if(!$column.isPk)
+	<if test="${column.propertyName} != null">AND `${column.name}`=#{${column.propertyName}}</if>
+	#end
+#end
+	</where>
+	</select>
+	
 	<!-- ${entity.comment}查询全部 -->
 	<select id="findAll" resultMap="${entity.varName}Map">
     SELECT

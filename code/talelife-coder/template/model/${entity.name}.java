@@ -10,7 +10,9 @@ import java.util.Date;
  */
 public class ${entity.name} implements Serializable{
 #foreach($property in $entity.properties)
-	//${property.comment}
+	/**
+	 * ${property.comment}
+	 */
 	private ${property.type} ${property.name};
 	
 #end

@@ -1,6 +1,10 @@
 package ${entity.packageName}.mapper;
 import ${entity.packageName}.model.${entity.name};
 import java.util.List;
+
+import com.github.pagehelper.Page;
+import ${entity.packageName}.model.${entity.name};
+import ${entity.packageName}.service.${entity.name}Service.${entity.name}Query;
 /**
  * ${entity.comment}数据操作接口
  * date: $dateFormat.format(${config.date})
@@ -20,4 +24,6 @@ public interface ${entity.name}Mapper{
 	${entity.name} findByPK(#foreach($property in $entity.primaryKeys)${property.type} ${property.name}#end);
 	
 	int delete(#foreach($property in $entity.primaryKeys)${property.type} ${property.name}#end);
+	
+	Page<${entity.name}> findPage(${entity.name}Query query);
 }
