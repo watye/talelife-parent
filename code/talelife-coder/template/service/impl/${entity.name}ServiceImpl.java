@@ -1,10 +1,11 @@
 package ${entity.packageName}.service.impl;
-import org.springframework.stereotype.Service;
 import ${entity.packageName}.service.${entity.name}Service;
 import ${entity.packageName}.mapper.${entity.name}Mapper;
 import ${entity.packageName}.model.${entity.name};
+import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
+import com.talelife.util.Page;
 /**
  * ${entity.comment}业务实现类
  * date: $dateFormat.format(${config.date})
@@ -22,8 +23,13 @@ public class ${entity.name}ServiceImpl implements ${entity.name}Service{
 		return ${entity.varName}Mapper.findAll();
 	}
 	
-	public List<${entity.name}> findList(${entity.name} ${entity.varName}){
-		return ${entity.varName}Mapper.findList(${entity.varName});
+	public List<${entity.name}> findList(${entity.name}Query query){
+		query.setPageNum(null);
+		return ${entity.varName}Mapper.findList(query);
+	}
+	
+	public Page<${entity.name}> findPage(${entity.name}Query query) {
+		return new Page<${entity.name}>(${entity.varName}Mapper.findPage(query));
 	}
 	
 	public int add(${entity.name} ${entity.varName}){
