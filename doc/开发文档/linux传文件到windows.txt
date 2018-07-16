@@ -1,0 +1,12 @@
+环境：centos,window server 2008
+-------------------------------------------------
+mkdir -p /mnt/db_remote_backup
+
+yum install cifs-utils
+
+mount -t cifs -o username=administrator,password=Cifi@test //192.168.8.31/数据库异地备份 /mnt/db_remote_backup
+
+
+
+
+umount /mnt/db_remote_backup

@@ -1,0 +1,15 @@
+安装机器 172.28.39.35，172.28.39.44 172.28.39.40 172.28.39.19 172.28.39.3
+1、下载docker
+下载目录/root/packages
+wget https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-17.03.2.ce-1.el7.centos.x86_64.rpm
+wget https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-selinux-17.03.2.ce-1.el7.centos.noarch.rpm
+
+2、安装docker
+yum localinstall docker-ce-selinux-17.03.2.ce-1.el7.centos.noarch.rpm
+yum localinstall docker-ce-17.03.2.ce-1.el7.centos.x86_64.rpm
+
+3、启动docker
+systemctl enable docker
+systemctl start docker
+
+-- the end
